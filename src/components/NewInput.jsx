@@ -1,5 +1,5 @@
 import { View, TextInput, StyleSheet } from 'react-native';
-import theme from '../src/constants/theme.style';
+import theme from '../constants/theme.style';
 
 export default function NewInput(props) {
   let newStyle;

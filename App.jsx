@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Jurusan from './src/components/Jurusan';
+import NewInput from './src/components/NewInput';
 
 export default function App() {
   return (
