@@ -5,7 +5,7 @@ import NewInput from './src/NewInput';
 export default function App() {
   return (
     <View style={styles.container}>
-      <NewInput isBlue={false} isOrange={false} isPassword={true}></NewInput>
+      <NewInput isBlue={true} isOrange={false} isPassword={false}></NewInput>
       <StatusBar style="auto" />
     </View>
   );

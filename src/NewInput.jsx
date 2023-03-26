@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     color: '#000000',
     flexDirection: 'row',
     borderRadius: 40,
-    width: 360,
+    width: '83.7%',
     height: 43,
   },
   commonInput: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     paddingLeft: 27,
     color: '#000000',
     borderRadius: 40,
-    width: 311,
+    width: '72%',
     height: 56,
     padding: 17,
   },
