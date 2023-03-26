@@ -1,11 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import NewInput from './src/NewInput';
+import Jurusan from './src/components/Jurusan';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <NewInput isBlue={true} isOrange={false} isPassword={false}></NewInput>
+      <Jurusan jurusan="Dago - Caringin" info="D 666 KAY" isHarga={false} kapasitas="4"></Jurusan>
       <StatusBar style="auto" />
     </View>
   );
