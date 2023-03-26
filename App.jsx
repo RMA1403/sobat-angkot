@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import NewInput from './src/NewInput';
+import NewInput from './src/components/NewInput';
 
 export default function App() {
   return (
