@@ -2,12 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import DriverCard from './src/components/DriverCard';
 // import NewInput from './src/components/NewInput';
+import Jurusan from './src/components/Jurusan';
+import NewInput from './src/components/NewInput';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <NewInput isBlue={true} isOrange={false} isPassword={false}></NewInput> */}
-      <DriverCard></DriverCard>
+      <Jurusan jurusan="Dago - Caringin" info="D 666 KAY" isHarga={false} kapasitas="4"></Jurusan>
       <StatusBar style="auto" />
     </View>
   );
