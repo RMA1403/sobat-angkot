@@ -4,11 +4,13 @@ import DriverCard from './src/components/DriverCard';
 // import NewInput from './src/components/NewInput';
 import Jurusan from './src/components/Jurusan';
 import NewInput from './src/components/NewInput';
+import Login from './src/screens/Login';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Jurusan jurusan="Dago - Caringin" info="D 666 KAY" isHarga={false} kapasitas="4"></Jurusan>
+    <View>
+      <Login />
+      {/* <NewInput /> */}
       <StatusBar style="auto" />
     </View>
   );
