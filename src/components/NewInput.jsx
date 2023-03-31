@@ -1,7 +1,10 @@
 import { View, TextInput, StyleSheet } from 'react-native';
 import theme from '../constants/theme.style';
+import { useState } from 'react';
 
 export default function NewInput(props) {
+  const [value, onChangeText] = useState('');
+
   let newStyle;
   let holder;
   let bulat;
@@ -24,7 +27,16 @@ export default function NewInput(props) {
   return (
     <View style={newStyle}>
       <View style={bulat}></View>
-      <TextInput placeholder={holder} secureTextEntry={props.isPassword} />
+      <TextInput
+        onChangeText={(text) => {
+          onChangeText(text);
+          props.onChange && props.onChange(text);
+        }}
+        editable={props.canEdit ?? true}
+        placeholder={props.holder ?? holder}
+        secureTextEntry={props.isPassword}
+        value={value}
+      />
     </View>
   );
 }
