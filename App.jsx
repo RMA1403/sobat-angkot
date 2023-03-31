@@ -1,16 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import DriverCard from './src/components/DriverCard';
-// import NewInput from './src/components/NewInput';
-import Jurusan from './src/components/Jurusan';
-import NewInput from './src/components/NewInput';
-import Login from './src/screens/Login';
-import NearbyAngkotSection from './src/screens/ClientHome/NearbyAngkotSection';
+import PickupInputSection from './src/screens/ClientHome/PickupInputSection';
 
 export default function App() {
   return (
     <View>
-      <NearbyAngkotSection onClick={() => 0}></NearbyAngkotSection>
+      <PickupInputSection/>
       <StatusBar style="auto" />
     </View>
   );
