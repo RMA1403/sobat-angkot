@@ -11,6 +11,7 @@ export default function Jurusan(props) {
 
   const handlePressOut = () => {
     setIsPressed(false);
+    props.onClick();
   };
 
   let newStyle = styles.common;
@@ -114,7 +115,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: '#000000',
     borderRadius: 20,
-    width: '83.7%%',
     height: 68,
     shadowOffset: { height: 4 },
     shadowColor: '#171717',

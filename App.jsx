@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import PickupInputSection from './src/screens/ClientHome/PickupInputSection';
+import DetailAngkotJurusan from './src/screens/ClientHome/DetailAngkotJurusanSection';
 
 export default function App() {
   return (
     <View>
-      <PickupInputSection/>
+      <DetailAngkotJurusan jurusan="Dago - Caringin" onClick={() => 0} />
       <StatusBar style="auto" />
     </View>
   );
