@@ -5,12 +5,12 @@ import DriverCard from './src/components/DriverCard';
 import Jurusan from './src/components/Jurusan';
 import NewInput from './src/components/NewInput';
 import Login from './src/screens/Login';
+import NearbyAngkotSection from './src/screens/ClientHome/NearbyAngkotSection';
 
 export default function App() {
   return (
     <View>
-      <Login />
-      {/* <NewInput /> */}
+      <NearbyAngkotSection onClick={() => 0}></NearbyAngkotSection>
       <StatusBar style="auto" />
     </View>
   );
