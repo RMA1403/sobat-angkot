@@ -36,11 +36,12 @@ export default function NearbyAngkotSection(props) {
 
 const styles = StyleSheet.create({
   container: {
+    width: '100%',
     justifyContent: 'center',
-    marginHorizontal: 0.0674 * vw,
+    paddingHorizontal: 0.0674 * vw,
   },
   text: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 700,
   },
   jurusan: {

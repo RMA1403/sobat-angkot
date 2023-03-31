@@ -1,19 +1,34 @@
 import { Pressable, StyleSheet, View, Text } from 'react-native';
 import NewInput from '../../components/NewInput.jsx';
 import theme from '../../constants/theme.style.js';
+import { useState, useRef } from 'react';
 
-export default function PickupInputSection() {
+export default function PickupInputSection({ onClick }) {
+  const [startPoint, setStartPoint] = useState('');
+  const [stopPoint, setStopPoint] = useState('');
+
+  const startRef = useRef(null);
+  const stopRef = useRef(null);
+
   return (
     <View style={styles.sectionContainer}>
       <Text style={styles.pickupText}>Choose pickup point:</Text>
-      <NewInput isBlue={true} />
+      <NewInput
+        onChange={(start) => {
+          setStartPoint(start);
+        }}
+        isBlue={true}
+      />
       <Text style={styles.pickupText}>Choose stop point:</Text>
-      <NewInput isOrange={true} />
+      <NewInput onChange={(stop) => setStopPoint(stop)} isOrange={true} />
       <Pressable
         // onPressIn={handlePressSignUpIn}
         // onPressOut={handlePressSignUpOut}
         // style={signUp && styles.pressedSignUp}
         style={styles.searchButton}
+        onPressIn={() => {
+          onClick(startPoint, stopPoint);
+        }}
       >
         <Text style={styles.searchText}>Search...</Text>
       </Pressable>

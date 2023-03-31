@@ -11,7 +11,7 @@ export default function Jurusan(props) {
 
   const handlePressOut = () => {
     setIsPressed(false);
-    props.onClick();
+    props.onClick(props.jurusan);
   };
 
   let newStyle = styles.common;
@@ -123,18 +123,18 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
   },
   jurusan: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 700,
     marginTop: 9,
   },
   harga: {
-    fontSize: 14,
+    fontSize: 10,
     fontWeight: 400,
     marginTop: 3,
     color: '#6A5C5C',
   },
   platNomor: {
-    fontSize: 12,
+    fontSize: 10,
     fontWeight: 700,
     marginTop: 6,
   },
