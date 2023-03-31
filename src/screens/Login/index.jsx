@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
-import NewInput from '../components/NewInput';
-import theme from '../constants/theme.style';
+import NewInput from '../../components/NewInput';
+import theme from '../../constants/theme.style';
 import { useState } from 'react';
 
 export default function Login() {
