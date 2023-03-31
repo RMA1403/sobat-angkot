@@ -26,7 +26,7 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require('../../assets/angkot1.png')} />
+      <Image style={styles.image} source={require('../../../assets/angkot1.png')} />
       <Text style={styles.text}>Sobat Angkot</Text>
       <View style={styles.textInput}>
         <NewInput />

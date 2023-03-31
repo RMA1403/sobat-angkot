@@ -4,7 +4,7 @@ import DriverCard from './src/components/DriverCard';
 // import NewInput from './src/components/NewInput';
 import Jurusan from './src/components/Jurusan';
 import NewInput from './src/components/NewInput';
-import Login from './src/screens/Login/Login';
+import Login from './src/screens/Login';
 
 export default function App() {
   return (
