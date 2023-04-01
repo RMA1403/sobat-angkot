@@ -1,10 +1,11 @@
-import { Text, View, Image, ScrollView, StyleSheet } from 'react-native';
+import { Text, View, Image, ScrollView, StyleSheet, BackHandler } from 'react-native';
 import DetailAngkotJurusan from './DetailAngkotJurusanSection';
 import LinkedInputSection from './LinkedInputSection';
 import NearbyAngkotSection from './NearbyAngkotSection';
 import PickupInputSection from './PickupInputSection';
 import DriverCard from '../../components/DriverCard';
-import { useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import React, { useState } from 'react';
 import { Dimensions } from 'react-native';
 
 const vh = Dimensions.get('window').height;
@@ -15,6 +16,21 @@ export default function ClientHome() {
   const [jurusan, setJurusan] = useState('');
   const [startPoint, setStartPoint] = useState('');
   const [stopPoint, setStopPoint] = useState('');
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const backhandler = BackHandler.addEventListener('hardwareBackPress', () => {
+        if (flow > 1) {
+          setFlow(flow - 1);
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      return () => backhandler.remove();
+    }, [flow])
+  );
 
   return (
     <ScrollView>

@@ -4,11 +4,7 @@ import NewInput from '../../components/NewInput';
 import theme from '../../constants/theme.style';
 
 export default function Login({ navigation }) {
-  const handlePress = () => {
-    setIsPressed(false);
-    navigation.navigate('ClientHome');
-  };
-
+  const handlePress = () => navigation.navigate('ClientHome');
   const handlePressSignUp = () => 0;
 
   return (
