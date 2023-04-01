@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, Pressable, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity, FlatList } from 'react-native';
 import { Dimensions } from 'react-native';
 import theme from '../constants/theme.style';
 
@@ -54,9 +54,9 @@ export default function DriverCard() {
           horizontal={true}
           ItemSeparatorComponent={<View style={{ width: 0.05 * vw }}></View>}
           renderItem={({ item, idx }) => (
-            <Pressable style={styles.paymentButton} key={idx}>
+            <TouchableOpacity style={styles.paymentButton} key={idx}>
               <Text style={styles.buttonText}>{item}</Text>
-            </Pressable>
+            </TouchableOpacity>
           )}
         />
       </View>
