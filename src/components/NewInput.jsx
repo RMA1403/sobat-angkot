@@ -36,6 +36,7 @@ export default function NewInput(props) {
         placeholder={props.holder ?? holder}
         secureTextEntry={props.isPassword}
         value={value}
+        style={{ flex: 1 }}
       />
     </View>
   );
