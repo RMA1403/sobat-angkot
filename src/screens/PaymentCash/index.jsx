@@ -60,16 +60,18 @@ const styles = StyleSheet.create({
     marginBottom: 0.0607375 * vh,
   },
   harga: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: 700,
   },
   textPayment: {
+    textAlign: 'center',
     fontWeight: 700,
     marginTop: 0.01073 * vh,
-    fontSize: 32,
+    fontSize: 28,
   },
   textInfo: {
-    fontSize: 32,
+    textAlign: 'center',
+    fontSize: 28,
     fontWeight: 700,
     marginHorizontal: 0.1415 * vw,
   },
