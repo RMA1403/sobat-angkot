@@ -4,7 +4,7 @@ import NewInput from '../../components/NewInput';
 import theme from '../../constants/theme.style';
 import { useState } from 'react';
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [isPressed, setIsPressed] = useState(false);
   const [signUp, setSignUp] = useState(false);
 
@@ -14,6 +14,7 @@ export default function Login() {
 
   const handlePressOut = () => {
     setIsPressed(false);
+    navigation.navigate('ClientHome');
   };
 
   const handlePressSignUpIn = () => {
