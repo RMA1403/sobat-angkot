@@ -1,19 +1,7 @@
-import { View, StyleSheet, Image, Text, Pressable } from 'react-native';
+import { View, StyleSheet, Image, Text, Pressable, TouchableOpacity } from 'react-native';
 import theme from '../constants/theme.style';
-import { useState } from 'react';
 
 export default function Jurusan(props) {
-  const [isPressed, setIsPressed] = useState(false);
-
-  const handlePressIn = () => {
-    setIsPressed(true);
-  };
-
-  const handlePressOut = () => {
-    setIsPressed(false);
-    props.onClick(props.jurusan);
-  };
-
   let newStyle = styles.common;
   let jurusan = props.jurusan;
   let info = props.info;
@@ -40,11 +28,7 @@ export default function Jurusan(props) {
   }
 
   return (
-    <Pressable
-      onPressIn={handlePressIn}
-      onPressOut={handlePressOut}
-      style={[newStyle, isPressed && styles.pressedItem]}
-    >
+    <TouchableOpacity onPress={() => props.onClick(props.jurusan)} style={newStyle}>
       <Image style={styles.angkot} source={require('../../assets/angkot2.png')}></Image>
       <View style={{ flexDirection: 'column' }}>
         <Text style={styles.jurusan}>{jurusan}</Text>
@@ -61,7 +45,7 @@ export default function Jurusan(props) {
         </View>
       </View>
       <View style={bulat}></View>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 
@@ -143,9 +127,5 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: theme.DARK_GRAY,
     marginTop: 7,
-  },
-  pressedItem: {
-    opacity: 0.5,
-    backgroundColor: 'white',
   },
 });

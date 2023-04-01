@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import NewInput from '../../components/NewInput';
 import theme from '../../constants/theme.style';
 import { useState } from 'react';
@@ -8,25 +8,9 @@ import { Dimensions } from 'react-native';
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
 
-export default function Login() {
-  const [isPressed, setIsPressed] = useState(false);
-  const [signUp, setSignUp] = useState(false);
-
-  const handlePressIn = () => {
-    setIsPressed(true);
-  };
-
-  const handlePressOut = () => {
-    setIsPressed(false);
-  };
-
-  const handlePressSignUpIn = () => {
-    setSignUp(true);
-  };
-
-  const handlePressSignUpOut = () => {
-    setSignUp(false);
-  };
+export default function Login({ navigation }) {
+  const handlePress = () => navigation.navigate('ClientHome');
+  const handlePressSignUp = () => 0;
 
   return (
     <View style={styles.container}>
@@ -38,24 +22,14 @@ export default function Login() {
       <View style={styles.textInput}>
         <NewInput isPassword={true} />
       </View>
-      <Pressable
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
-        style={[styles.login, isPressed && styles.pressedLogin]}
-      >
+      <TouchableOpacity onPress={handlePress} style={styles.login}>
         <Text style={styles.textLogin}>Login</Text>
-      </Pressable>
+      </TouchableOpacity>
       <View style={styles.textContainer}>
         <Text style={{ color: theme.DARK_BLUE, fontSize: 12 }}>Doesn't have an account yet? </Text>
-        <Pressable
-          onPressIn={handlePressSignUpIn}
-          onPressOut={handlePressSignUpOut}
-          style={signUp && styles.pressedSignUp}
-        >
-          <Text style={{ color: theme.DARK_BLUE, fontWeight: 700, fontSize: 12 }}>
-            Sign up here.
-          </Text>
-        </Pressable>
+        <TouchableOpacity onPress={handlePressSignUp}>
+          <Text style={{ color: theme.DARK_BLUE, fontWeight: 700, fontSize: 12 }}>Sign up here.</Text>
+        </TouchableOpacity>
       </View>
 
       <StatusBar style="auto" />
@@ -102,13 +76,5 @@ const styles = StyleSheet.create({
     fontSize: 34,
     fontWeight: 700,
     marginBottom: (40 / 932) * vh,
-  },
-  pressedLogin: {
-    opacity: 0.5,
-    backgroundColor: theme.LIGHT_BLUE,
-  },
-  pressedSignUp: {
-    opacity: 0.5,
-    backgroundColor: 'white',
   },
 });
