@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, View, Text } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text } from 'react-native';
 import NewInput from '../../components/NewInput.jsx';
 import theme from '../../constants/theme.style.js';
 import { useState, useRef } from 'react';
@@ -6,9 +6,6 @@ import { useState, useRef } from 'react';
 export default function PickupInputSection({ onClick }) {
   const [startPoint, setStartPoint] = useState('');
   const [stopPoint, setStopPoint] = useState('');
-
-  const startRef = useRef(null);
-  const stopRef = useRef(null);
 
   return (
     <View style={styles.sectionContainer}>
@@ -21,17 +18,14 @@ export default function PickupInputSection({ onClick }) {
       />
       <Text style={styles.pickupText}>Choose stop point:</Text>
       <NewInput onChange={(stop) => setStopPoint(stop)} isOrange={true} />
-      <Pressable
-        // onPressIn={handlePressSignUpIn}
-        // onPressOut={handlePressSignUpOut}
-        // style={signUp && styles.pressedSignUp}
+      <TouchableOpacity
         style={styles.searchButton}
         onPressIn={() => {
           onClick(startPoint, stopPoint);
         }}
       >
         <Text style={styles.searchText}>Search...</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -50,9 +44,7 @@ const styles = StyleSheet.create({
   },
   searchButton: {
     justifyContent: 'center',
-    // borderWidth: 1,
     marginTop: 42,
-    // borderColor: theme.LIGHT_BLUE,
     backgroundColor: theme.LIGHT_BLUE,
     borderRadius: 50,
     width: 131,
