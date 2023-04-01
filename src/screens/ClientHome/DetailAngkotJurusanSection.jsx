@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 0.0815 * vw,
   },
   jurusan: {
-    marginTop: 29,
+    marginTop: 19,
   },
 });

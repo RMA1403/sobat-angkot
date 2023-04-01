@@ -85,7 +85,7 @@ export default function ClientHome() {
             />
           </View>
         ) : flow == 3 ? (
-          <View style={{ marginTop: 15, width: '100%' }}>
+          <View style={{ marginTop: 20, width: '100%' }}>
             <DetailAngkotJurusan jurusan={jurusan} onClick={() => setFlow(4)} />
           </View>
         ) : null}
