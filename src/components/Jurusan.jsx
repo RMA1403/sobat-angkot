@@ -105,6 +105,8 @@ const styles = StyleSheet.create({
     shadowColor: '#171717',
     shadowOpacity: 0.2,
     shadowRadius: 2,
+    elevation: 5,
+    marginBottom: 10,
   },
   jurusan: {
     fontSize: 16,
