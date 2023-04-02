@@ -20,7 +20,7 @@ const MyTheme = {
 export default function App() {
   return (
     <View style={{ justifyContent: 'center', flex: 1, alignItems: 'center' }}>
-      <ConfirmPayment />
+      <ConfirmPayment notConfirmed={false} isLoading={true} />
     </View>
     // <NavigationContainer theme={MyTheme}>
     //   <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
