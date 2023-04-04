@@ -1,5 +1,9 @@
-import { View, StyleSheet, Image, Text, Pressable, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import theme from '../constants/theme.style';
+import { Dimensions } from 'react-native';
+
+const vw = Dimensions.get('window').width;
+const vh = Dimensions.get('window').height;
 
 export default function Jurusan(props) {
   let newStyle = styles.common;
@@ -31,7 +35,9 @@ export default function Jurusan(props) {
     <TouchableOpacity onPress={() => props.onClick(props.jurusan)} style={newStyle}>
       <Image style={styles.angkot} source={require('../../assets/angkot2.png')}></Image>
       <View style={{ flexDirection: 'column' }}>
-        <Text style={styles.jurusan}>{jurusan}</Text>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Text style={styles.jurusan}>{jurusan}</Text>
+        </View>
         <View style={{ flexDirection: 'row' }}>
           <Text style={infoStyle}>
             {info}
@@ -100,18 +106,22 @@ const styles = StyleSheet.create({
     color: '#000000',
     borderRadius: 20,
     width: '100%',
-    height: 68,
     shadowOffset: { height: 4 },
     shadowColor: '#171717',
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 5,
     marginBottom: 10,
+    paddingBottom: (10.5 / 932) * vh,
+    // paddingRight: 1,
+    // paddingRight: 20,
   },
   jurusan: {
+    borderWidth: 1,
     fontSize: 16,
     fontWeight: 700,
     marginTop: 9,
+    // marginRight: 50,
   },
   harga: {
     fontSize: 10,
