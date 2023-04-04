@@ -23,6 +23,6 @@ export default function App() {
     //     <Stack.Screen name="ClientHome" component={ClientHome} />
     //   </Stack.Navigator>
     // </NavigationContainer>
-    <Map width={170} height={170} />
+    <Map width={300} height={300} />
   );
 }
