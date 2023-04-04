@@ -21,7 +21,7 @@ export default function PaymentEMoney(props) {
 
   return (
     <View style={styles.container}>
-      <View style={{ marginTop: 0.083691 * vh, alignItems: 'center' }}>
+      <View style={{ alignItems: 'center' }}>
         <Text style={styles.textPayment}>Payment</Text>
         <Text style={styles.textPayment}>e-Money</Text>
       </View>
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 0.01073 * vh,
+    marginTop: (88 / 932) * vh,
     // fontFamily: 'ZenKakuGothicAntique-Black'
   },
   hargaContainer: {
@@ -49,15 +49,16 @@ const styles = StyleSheet.create({
     color: '#000000',
     borderRadius: 30,
     width: '84.6517%',
-    height: 68,
+    height: (80 / 932) * vh,
     shadowOffset: { height: 4 },
     shadowColor: '#171717',
     shadowOpacity: 0.2,
     shadowRadius: 2,
-    marginTop: 0.04292 * vh,
+    marginTop: (50 / 932) * vh,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 0.0607375 * vh,
+    marginBottom: (50 / 932) * vh,
+    elevation: 6,
   },
   harga: {
     fontSize: 28,
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
   textPayment: {
     textAlign: 'center',
     fontWeight: 700,
-    marginTop: 0.01073 * vh,
+    marginTop: (11 / 932) * vh,
     fontSize: 28,
   },
   textInfo: {
