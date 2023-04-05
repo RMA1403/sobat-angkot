@@ -1,19 +1,11 @@
-import { View, StyleSheet, Image, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import theme from '../constants/theme.style';
 import { Dimensions } from 'react-native';
-import { useState } from 'react';
 
 const vw = Dimensions.get('window').width;
 const vh = Dimensions.get('window').height;
 
 export default function Jurusan(props) {
-  const [containerHeight, setContainerHeight] = useState(0);
-
-  const onLayout = (event) => {
-    const { height } = event.nativeEvent.layout;
-    setContainerHeight(height);
-  };
-
   let newStyle = styles.common;
   let jurusan = props.jurusan;
   let info = props.info;
@@ -41,15 +33,13 @@ export default function Jurusan(props) {
   }
 
   return (
-    <TouchableOpacity
-      onPress={() => props.onClick(props.jurusan)}
-      style={newStyle}
-      onLayout={onLayout}
-    >
+    <TouchableOpacity onPress={() => props.onClick(props.jurusan)} style={newStyle}>
       <Image style={styles.angkot} source={require('../../assets/angkot2.png')}></Image>
       <View style={{ flexDirection: 'column', flex: 1 }}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Text style={styles.jurusan}>{jurusan}</Text>
+          <Text style={[styles.jurusan, { marginRight: props.isHarga ? 0 : (53 / 430) * vw }]}>
+            {jurusan}
+          </Text>
         </View>
         <View style={{ flexDirection: 'row' }}>
           <Text style={infoStyle}>
@@ -63,7 +53,7 @@ export default function Jurusan(props) {
           </Text>
         </View>
       </View>
-      <View style={[{ marginVertical: containerHeight / 2 - 10 }, bulat]}></View>
+      <View style={bulat}></View>
     </TouchableOpacity>
   );
 }
@@ -105,13 +95,14 @@ const styles = StyleSheet.create({
   angkot: {
     width: 79,
     height: 40,
-    marginTop: 13,
+    marginTop: 8,
     marginLeft: 3,
   },
   common: {
     borderWidth: 1,
     flexDirection: 'row',
     borderColor: theme.DARK_GRAY,
+    alignItems: 'center',
     backgroundColor: 'white',
     color: '#000000',
     borderRadius: 20,
@@ -129,7 +120,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 700,
     marginTop: 9,
-    marginRight: (53 / 430) * vw,
   },
   harga: {
     fontSize: 10,
