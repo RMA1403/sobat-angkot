@@ -20,7 +20,7 @@ const MyTheme = {
 export default function App() {
   return (
     <View>
-      <PaymentEMoney success={true} />
+      <PaymentEMoney success={false} />
     </View>
   );
 }

@@ -1,8 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
-import NewInput from '../../components/NewInput';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import theme from '../../constants/theme.style';
-import { useState } from 'react';
 import { Dimensions } from 'react-native';
 
 const vh = Dimensions.get('window').height;
