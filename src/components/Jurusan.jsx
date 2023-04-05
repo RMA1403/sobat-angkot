@@ -1,5 +1,9 @@
-import { View, StyleSheet, Image, Text, Pressable, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import theme from '../constants/theme.style';
+import { Dimensions } from 'react-native';
+
+const vw = Dimensions.get('window').width;
+const vh = Dimensions.get('window').height;
 
 export default function Jurusan(props) {
   let newStyle = styles.common;
@@ -10,6 +14,7 @@ export default function Jurusan(props) {
   let kapasitas = props.kapasitas;
   let templateKapasitas = 'Capacity: ';
   let maxKapasitas = '/12';
+
   if (props.isHarga) {
     infoStyle = styles.harga;
     garis = '';
@@ -30,8 +35,12 @@ export default function Jurusan(props) {
   return (
     <TouchableOpacity onPress={() => props.onClick(props.jurusan)} style={newStyle}>
       <Image style={styles.angkot} source={require('../../assets/angkot2.png')}></Image>
-      <View style={{ flexDirection: 'column' }}>
-        <Text style={styles.jurusan}>{jurusan}</Text>
+      <View style={{ flexDirection: 'column', flex: 1 }}>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <Text style={[styles.jurusan, { marginRight: props.isHarga ? 0 : (53 / 430) * vw }]}>
+            {jurusan}
+          </Text>
+        </View>
         <View style={{ flexDirection: 'row' }}>
           <Text style={infoStyle}>
             {info}
@@ -59,7 +68,6 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: 'flex-end',
     position: 'absolute',
-    marginVertical: 24,
     right: 25,
   },
   yellow: {
@@ -71,7 +79,6 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: 'flex-end',
     position: 'absolute',
-    marginVertical: 24,
     right: 25,
   },
   green: {
@@ -83,32 +90,33 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: 'flex-end',
     position: 'absolute',
-    marginVertical: 24,
     right: 25,
   },
   angkot: {
     width: 79,
     height: 40,
-    marginTop: 13,
+    marginTop: 8,
     marginLeft: 3,
   },
   common: {
     borderWidth: 1,
     flexDirection: 'row',
     borderColor: theme.DARK_GRAY,
+    alignItems: 'center',
     backgroundColor: 'white',
     color: '#000000',
     borderRadius: 20,
     width: '100%',
-    height: 68,
     shadowOffset: { height: 4 },
     shadowColor: '#171717',
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 5,
     marginBottom: 10,
+    paddingBottom: (10.5 / 932) * vh,
   },
   jurusan: {
+    flex: 1,
     fontSize: 16,
     fontWeight: 700,
     marginTop: 9,
