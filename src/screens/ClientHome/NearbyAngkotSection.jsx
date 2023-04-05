@@ -43,8 +43,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: 700,
+    marginBottom: 10,
   },
   jurusan: {
-    marginTop: 29,
+    marginTop: 19,
   },
 });
