@@ -1,11 +1,19 @@
-import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity, FlatList } from 'react-native';
 import theme from '../constants/theme.style';
 import { Dimensions } from 'react-native';
+import { useState } from 'react';
 
 const vw = Dimensions.get('window').width;
 const vh = Dimensions.get('window').height;
 
 export default function Jurusan(props) {
+  const [containerHeight, setContainerHeight] = useState(0);
+
+  const onLayout = (event) => {
+    const { height } = event.nativeEvent.layout;
+    setContainerHeight(height);
+  };
+
   let newStyle = styles.common;
   let jurusan = props.jurusan;
   let info = props.info;
@@ -14,6 +22,7 @@ export default function Jurusan(props) {
   let kapasitas = props.kapasitas;
   let templateKapasitas = 'Capacity: ';
   let maxKapasitas = '/12';
+
   if (props.isHarga) {
     infoStyle = styles.harga;
     garis = '';
@@ -32,9 +41,13 @@ export default function Jurusan(props) {
   }
 
   return (
-    <TouchableOpacity onPress={() => props.onClick(props.jurusan)} style={newStyle}>
+    <TouchableOpacity
+      onPress={() => props.onClick(props.jurusan)}
+      style={newStyle}
+      onLayout={onLayout}
+    >
       <Image style={styles.angkot} source={require('../../assets/angkot2.png')}></Image>
-      <View style={{ flexDirection: 'column' }}>
+      <View style={{ flexDirection: 'column', flex: 1 }}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <Text style={styles.jurusan}>{jurusan}</Text>
         </View>
@@ -50,7 +63,7 @@ export default function Jurusan(props) {
           </Text>
         </View>
       </View>
-      <View style={bulat}></View>
+      <View style={[{ marginVertical: containerHeight / 2 - 10 }, bulat]}></View>
     </TouchableOpacity>
   );
 }
@@ -65,7 +78,6 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: 'flex-end',
     position: 'absolute',
-    marginVertical: 24,
     right: 25,
   },
   yellow: {
@@ -77,7 +89,6 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: 'flex-end',
     position: 'absolute',
-    marginVertical: 24,
     right: 25,
   },
   green: {
@@ -89,7 +100,6 @@ const styles = StyleSheet.create({
     height: 20,
     justifyContent: 'flex-end',
     position: 'absolute',
-    marginVertical: 24,
     right: 25,
   },
   angkot: {
@@ -113,15 +123,13 @@ const styles = StyleSheet.create({
     elevation: 5,
     marginBottom: 10,
     paddingBottom: (10.5 / 932) * vh,
-    // paddingRight: 1,
-    // paddingRight: 20,
   },
   jurusan: {
-    borderWidth: 1,
+    flex: 1,
     fontSize: 16,
     fontWeight: 700,
     marginTop: 9,
-    // marginRight: 50,
+    marginRight: (53 / 430) * vw,
   },
   harga: {
     fontSize: 10,

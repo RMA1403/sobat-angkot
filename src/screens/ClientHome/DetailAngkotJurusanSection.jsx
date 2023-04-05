@@ -27,7 +27,7 @@ export default function DetailAngkotJurusan(props) {
 
   if (props.jurusan == 'Dago - Caringin') {
     detailAngkot = jurusanAngkotDagoCaringin;
-  } else if (props.jurusan == 'Caringin - Sadang Seranggg') {
+  } else if (props.jurusan == 'Caringin - Sadang Serang') {
     detailAngkot = jurusanAngkotCaringinSadangSerang;
   } else if (props.jurusan == 'Cisitu - Tegallega') {
     detailAngkot = jurusanAngkotCisituTegallega;

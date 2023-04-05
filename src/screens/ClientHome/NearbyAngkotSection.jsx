@@ -7,7 +7,7 @@ const vw = Dimensions.get('window').width;
 export default function NearbyAngkotSection(props) {
   const jurusanAngkot = [
     { jurusan: 'Dago - Caringin', harga: '3000 - 5000' },
-    { jurusan: 'Caringin - Sadang Seranggg', harga: '3000 - 5000' },
+    { jurusan: 'Caringin - Sadang Serang', harga: '3000 - 5000' },
     { jurusan: 'Cisitu - Tegallega', harga: '3000 - 5000' },
   ];
 
