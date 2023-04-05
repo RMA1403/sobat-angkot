@@ -31,7 +31,7 @@ export default function ConfirmPayment(props) {
             source={require('../../assets/profile-icon.png')}
           />
         </View>
-        <View style={{ flex: 1, paddingRight: (52 / 430) * vw }}>
+        <View style={{ flex: 1, paddingRight: (45 / 430) * vw }}>
           <Text style={{ fontWeight: 400, fontSize: 20 }}>
             <Text style={{ fontWeight: 700 }}>{props.username}</Text> wants to pay with cash!
           </Text>
