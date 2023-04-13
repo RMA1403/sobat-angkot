@@ -11,7 +11,7 @@ const vw = Dimensions.get('window').width;
 const vh = Dimensions.get('window').height;
 
 export default function DriverHome() {
-  const [flow, setFlow] = useState(2);
+  const [flow, setFlow] = useState(1);
   const angka = 8;
   let notConfirmed;
   let isLoading;
@@ -35,7 +35,8 @@ export default function DriverHome() {
   return (
     <View>
       <View style={styles.textContainer}>
-        <Text style={styles.text}>Good Morning, {data.name}</Text>
+        <Text style={styles.text}>Good Morning,</Text>
+        <Text style={styles.text}>{data.name}</Text>
       </View>
       <View
         style={{
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: 700,
     fontSize: 28,
-    width: (215 / 430) * vw,
+    textAlign: 'center',
   },
   platNomor: {
     fontWeight: 700,
