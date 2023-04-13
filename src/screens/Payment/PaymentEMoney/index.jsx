@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import theme from '../../constants/theme.style';
+import theme from '../../../constants/theme.style';
 import { Dimensions } from 'react-native';
 
 const vh = Dimensions.get('window').height;
@@ -11,10 +11,10 @@ export default function PaymentEMoney(props) {
   let gambar;
   if (props.success) {
     info = 'Payment successful!';
-    gambar = require('../../../assets/success.png');
+    gambar = require('../../../../assets/success.png');
   } else {
     info = 'Please prepare your card and tap it accordingly...';
-    gambar = require('../../../assets/loading.png');
+    gambar = require('../../../../assets/loading.png');
   }
 
   return (

@@ -4,10 +4,12 @@ import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import DriverCard from '../../../components/DriverCard';
 import NewInput from '../../../components/NewInput';
 
-export default function FoundAngkot() {
+export default function FoundAngkot({ navigation }) {
   const [jurusan, setJurusan] = useState('');
   const [startPoint, setStartPoint] = useState('');
   const [stopPoint, setStopPoint] = useState('');
+  const [licensePlate, setLicensePlate] = useState('');
+  const [capacity, setCapacity] = useState('');
 
   const vh = Dimensions.get('window').height;
   const vw = Dimensions.get('window').width;
@@ -28,6 +30,16 @@ export default function FoundAngkot() {
         value = await AsyncStorage.getItem('@stop_point');
         if (value) {
           setStopPoint(value);
+        }
+
+        value = await AsyncStorage.getItem('@license_plate');
+        if (value) {
+          setLicensePlate(value);
+        }
+
+        value = await AsyncStorage.getItem('@capacity');
+        if (value) {
+          setCapacity(value);
         }
       } catch (err) {
         console.log(err);
@@ -62,7 +74,16 @@ export default function FoundAngkot() {
           <NewInput holder={stopPoint} canEdit={false} isOrange={true} />
         </View>
         <View style={{ width: '100%', alignItems: 'center', marginVertical: 24 }}>
-          <DriverCard />
+          <DriverCard
+            driverName={'John Doe'}
+            licensePlate={licensePlate}
+            isIncreasing={false}
+            price={3000}
+            capacity={capacity}
+            cashNavigation={() => navigation.navigate('PaymentCash')}
+            eMoneyNavigation={() => navigation.navigate('PaymentEMoney')}
+            eWalletNavigation={() => console.log('e-wallet')}
+          />
         </View>
       </View>
     </ScrollView>

@@ -13,10 +13,10 @@ export default function PaymentCash(props) {
   let gambar;
   if (props.success) {
     info = 'Payment successful!';
-    gambar = require('../../../assets/success.png');
+    gambar = require('../../../../assets/success.png');
   } else {
     info = "Please prepare your cash accordingly and wait for driver's confirmation....";
-    gambar = require('../../../assets/loading.png');
+    gambar = require('../../../../assets/loading.png');
   }
 
   return (
@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 0.01073 * vh,
-    // fontFamily: 'ZenKakuGothicAntique-Black'
   },
   hargaContainer: {
     flexDirection: 'row',

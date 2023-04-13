@@ -61,6 +61,16 @@ export default function ChooseAngkot({ navigation }) {
     setDetailAngkot(jurusanMap[jurusan]);
   }, [jurusan]);
 
+  const handleClick = async (licensePlate, capacity) => {
+    try {
+      await AsyncStorage.setItem('@license_plate', licensePlate);
+      await AsyncStorage.setItem('@capacity', capacity);
+      navigation.navigate('FoundAngkot');
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <ScrollView>
       <View style={{ alignItems: 'center', paddingTop: 60 }}>
@@ -102,7 +112,7 @@ export default function ChooseAngkot({ navigation }) {
             renderItem={({ item, idx }) => (
               <View style={{ marginTop: 19 }} key={idx}>
                 <Jurusan
-                  onClick={() => navigation.navigate('FoundAngkot')}
+                  onClick={() => handleClick(item.platNomor, item.kapasitas)}
                   info={item.platNomor}
                   jurusan={jurusan}
                   kapasitas={item.kapasitas}
