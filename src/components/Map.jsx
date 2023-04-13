@@ -16,8 +16,8 @@ export default function Map({ width, height }) {
       setRegion({
         longitude: location.coords.longitude,
         latitude: location.coords.latitude,
-        longitudeDelta: 0.01,
-        latitudeDelta: 0.01,
+        longitudeDelta: 0.007,
+        latitudeDelta: 0.007,
       });
       setLatitude(location.coords.latitude);
       setLongitude(location.coords.longitude);

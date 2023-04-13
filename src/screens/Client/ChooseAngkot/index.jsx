@@ -1,9 +1,9 @@
-import { ScrollView, View, Text, Image, FlatList } from 'react-native';
+import { ScrollView, View, Text, Image, FlatList, Dimensions } from 'react-native';
 import NewInput from '../../../components/NewInput';
 import { useEffect, useState } from 'react';
-import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Jurusan from '../../../components/Jurusan';
+import Map from '../../../components/Map';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
@@ -84,10 +84,7 @@ export default function ChooseAngkot({ navigation }) {
         >
           {jurusan}
         </Text>
-        <Image
-          style={{ width: '93%', height: 0.181 * vh, borderRadius: 50 }}
-          source={require('../../../../assets/map-small.png')}
-        />
+        <Map width={0.93 * vw} height={0.181 * vh} />
         <View style={{ marginTop: 15, width: '100%', alignItems: 'center' }}>
           <NewInput holder={startPoint} canEdit={false} isBlue={true} />
           <Image

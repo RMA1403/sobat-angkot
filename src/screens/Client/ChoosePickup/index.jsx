@@ -1,11 +1,12 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
 import theme from '../../../constants/theme.style.js';
 import NewInput from '../../../components/NewInput.jsx';
 import { useEffect, useState } from 'react';
-import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Map from '../../../components/Map';
 
 const vh = Dimensions.get('window').height;
+const vw = Dimensions.get('window').width;
 
 export default function ChoosePickup({ navigation }) {
   const [jurusan, setJurusan] = useState('');
@@ -49,10 +50,7 @@ export default function ChoosePickup({ navigation }) {
       >
         {jurusan}
       </Text>
-      <Image
-        style={{ width: '93%', height: 0.368 * vh, borderRadius: 50 }}
-        source={require('../../../../assets/map-large.png')}
-      />
+      <Map width={0.93 * vw} height={0.368 * vh} />
       <View style={{ marginTop: 15, width: '100%', alignItems: 'center' }}>
         <Text style={styles.pickupText}>Choose pickup point:</Text>
         <NewInput

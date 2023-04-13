@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import DriverCard from '../../../components/DriverCard';
 import NewInput from '../../../components/NewInput';
+import Map from '../../../components/Map';
 
 export default function FoundAngkot({ navigation }) {
   const [jurusan, setJurusan] = useState('');
@@ -61,10 +62,7 @@ export default function FoundAngkot({ navigation }) {
         >
           {jurusan}
         </Text>
-        <Image
-          style={{ width: '93%', height: 0.181 * vh, borderRadius: 50 }}
-          source={require('../../../../assets/map-small.png')}
-        />
+        <Map width={0.93 * vw} height={0.181 * vh} />
         <View style={{ marginTop: 15, width: '100%', alignItems: 'center' }}>
           <NewInput holder={startPoint} canEdit={false} isBlue={true} />
           <Image

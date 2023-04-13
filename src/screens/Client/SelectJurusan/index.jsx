@@ -2,6 +2,7 @@ import { Text, View, Image, FlatList, ScrollView } from 'react-native';
 import Jurusan from '../../../components/Jurusan';
 import { Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Map from '../../../components/Map';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
@@ -29,10 +30,7 @@ export default function SelectJurusan({ navigation }) {
         <Text style={{ marginTop: 6, marginBottom: 12, fontWeight: 700, fontSize: 28 }}>
           Jl. Ir. H. Djuanda, no. 16
         </Text>
-        <Image
-          style={{ width: '93%', height: 0.368 * vh, borderRadius: 50 }}
-          source={require('../../../../assets/map-large.png')}
-        />
+        <Map width={0.93 * vw} height={0.368 * vh} />
         <View
           style={{
             marginTop: 15,
