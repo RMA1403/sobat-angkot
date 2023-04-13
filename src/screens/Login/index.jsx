@@ -2,14 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import NewInput from '../../components/NewInput';
 import theme from '../../constants/theme.style';
-import { useState } from 'react';
 import { Dimensions } from 'react-native';
 
 const vh = Dimensions.get('window').height;
-const vw = Dimensions.get('window').width;
 
 export default function Login({ navigation }) {
-  const handlePress = () => navigation.navigate('ClientHome');
+  const handlePress = () => navigation.navigate('SelectJurusan');
   const handlePressSignUp = () => 0;
 
   return (
@@ -28,7 +26,9 @@ export default function Login({ navigation }) {
       <View style={styles.textContainer}>
         <Text style={{ color: theme.DARK_BLUE, fontSize: 12 }}>Doesn't have an account yet? </Text>
         <TouchableOpacity onPress={handlePressSignUp}>
-          <Text style={{ color: theme.DARK_BLUE, fontWeight: 700, fontSize: 12 }}>Sign up here.</Text>
+          <Text style={{ color: theme.DARK_BLUE, fontWeight: 700, fontSize: 12 }}>
+            Sign up here.
+          </Text>
         </TouchableOpacity>
       </View>
 
