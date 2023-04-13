@@ -4,8 +4,22 @@ import theme from '../constants/theme.style';
 
 const vw = Dimensions.get('window').width;
 
-export default function DriverCard() {
+export default function DriverCard({
+  driverName,
+  licensePlate,
+  isIncreasing,
+  price,
+  capacity,
+  cashNavigation,
+  eMoneyNavigation,
+  eWalletNavigation,
+}) {
   const paymentOptions = ['Cash', 'e-Money', 'e-Wallet'];
+  const navigationMap = {
+    Cash: cashNavigation,
+    'e-Money': eMoneyNavigation,
+    'e-Wallet': eWalletNavigation,
+  };
 
   return (
     <View style={styles.cardContainer}>
@@ -19,8 +33,8 @@ export default function DriverCard() {
           </View>
 
           <View style={styles.angkotDesc}>
-            <Text style={styles.headerText}>D 777 KR</Text>
-            <Text style={styles.angkotDescText}>Capacity: 8/12</Text>
+            <Text style={styles.headerText}>{licensePlate}</Text>
+            <Text style={styles.angkotDescText}>Capacity: {capacity}/12</Text>
           </View>
         </View>
 
@@ -33,7 +47,7 @@ export default function DriverCard() {
           </View>
 
           <View style={styles.driverDesc}>
-            <Text style={styles.headerText}>John Doe</Text>
+            <Text style={styles.headerText}>{driverName}</Text>
             <Text style={styles.angkotDescText}>Driver</Text>
           </View>
         </View>
@@ -41,10 +55,10 @@ export default function DriverCard() {
 
       <View style={styles.angkotPrice}>
         <Image
-          style={{ width: 12, height: 16 }}
+          style={{ width: 12, height: 16, opacity: isIncreasing ? 100 : 0 }}
           source={require('../../assets/red-arrow-up.png')}
         />
-        <Text style={styles.priceText}>Rp. 3000</Text>
+        <Text style={styles.priceText}>Rp. {price}</Text>
       </View>
 
       <View style={styles.paymentContainer}>
@@ -54,7 +68,7 @@ export default function DriverCard() {
           horizontal={true}
           ItemSeparatorComponent={<View style={{ width: 0.05 * vw }}></View>}
           renderItem={({ item, idx }) => (
-            <TouchableOpacity style={styles.paymentButton} key={idx}>
+            <TouchableOpacity style={styles.paymentButton} key={idx} onPress={navigationMap[item]}>
               <Text style={styles.buttonText}>{item}</Text>
             </TouchableOpacity>
           )}
