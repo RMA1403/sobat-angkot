@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-import theme from '../../constants/theme.style';
-import { Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
+import theme from '../../../constants/theme.style';
+import { useEffect, useState } from 'react';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
 
-export default function PaymentEWallet(props) {
+export default function PaymentEWallet() {
+  const [isSuccess, setSuccess] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setSuccess(true), 2000);
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={{ alignItems: 'center' }}>
@@ -14,12 +20,12 @@ export default function PaymentEWallet(props) {
         <Text style={styles.textPayment}>e-Wallet</Text>
       </View>
       <View style={styles.hargaContainer}>
-        <Text style={styles.harga}>{props.harga}</Text>
+        <Text style={styles.harga}>3000</Text>
       </View>
-      {props.success ? (
+      {isSuccess ? (
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           <Text style={styles.textInfo}>Payment successful!</Text>
-          <Image style={styles.image} source={require('../../../assets/success.png')}></Image>
+          <Image style={styles.image} source={require('../../../../assets/success.png')}></Image>
         </View>
       ) : (
         <TouchableOpacity style={styles.scan}>

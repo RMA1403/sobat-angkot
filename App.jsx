@@ -5,7 +5,7 @@ import FoundAngkot from './src/screens/Client/FoundAngkot';
 import PaymentCash from './src/screens/Payment/PaymentCash';
 import PaymentEMoney from './src/screens/Payment/PaymentEMoney';
 import Login from './src/screens/Login';
-import PaymentEWallet from './src/screens/PaymentEWallet';
+import PaymentEWallet from './src/screens/Payment/PaymentEWallet';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -31,6 +31,7 @@ export default function App() {
         <Stack.Screen name="FoundAngkot" component={FoundAngkot} />
         <Stack.Screen name="PaymentCash" component={PaymentCash} />
         <Stack.Screen name="PaymentEMoney" component={PaymentEMoney} />
+        <Stack.Screen name="PaymentEWallet" component={PaymentEWallet} />
       </Stack.Navigator>
     </NavigationContainer>
   );
