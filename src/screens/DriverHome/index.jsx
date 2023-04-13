@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Map from '../../components/Map';
 import theme from '../../constants/theme.style';
 import ConfirmPayment from '../../components/ConfirmPayment';
-import LinearGradient from 'react-native-linear-gradient';
+import { BVLinearGradient } from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const vw = Dimensions.get('window').width;
 const vh = Dimensions.get('window').height;
@@ -70,15 +71,17 @@ export default function DriverHome() {
 
       {flow > 1 ? (
         <View style={{ alignItems: 'center' }}>
-          <View style={styles.confirmPaymentContainer}>
-            <View style={{ marginTop: (73 / 932) * vh }}>
-              <ConfirmPayment
-                username="kaie666"
-                notConfirmed={notConfirmed}
-                isLoading={isLoading}
-              />
+          <LinearGradient colors={['#FFFFFF', '#D9D9D9']} style={styles.linearGradien}>
+            <View style={styles.confirmPaymentContainer}>
+              <View style={{ marginTop: (73 / 932) * vh }}>
+                <ConfirmPayment
+                  username="kaie666"
+                  notConfirmed={notConfirmed}
+                  isLoading={isLoading}
+                />
+              </View>
             </View>
-          </View>
+          </LinearGradient>
         </View>
       ) : null}
     </View>
@@ -143,11 +146,14 @@ const styles = StyleSheet.create({
   },
   confirmPaymentContainer: {
     marginTop: -((12 / 932) * vh),
-    backgroundColor: 'white',
-    borderWidth: 1,
     borderRadius: 30,
     alignItems: 'center',
     width: (401 / 430) * vw,
     height: (480 / 932) * vh,
+  },
+  linearGradien: {
+    borderRadius: 30,
+    width: (401 / 430) * vw,
+    height: (468 / 932) * vh,
   },
 });
