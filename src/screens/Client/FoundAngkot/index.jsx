@@ -80,7 +80,7 @@ export default function FoundAngkot({ navigation }) {
             capacity={capacity}
             cashNavigation={() => navigation.navigate('PaymentCash')}
             eMoneyNavigation={() => navigation.navigate('PaymentEMoney')}
-            eWalletNavigation={() => console.log('e-wallet')}
+            eWalletNavigation={() => navigation.navigate('PaymentEWallet')}
           />
         </View>
       </View>
