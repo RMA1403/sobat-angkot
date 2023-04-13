@@ -2,14 +2,22 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import theme from '../../../constants/theme.style';
 import { Dimensions } from 'react-native';
+import { useEffect, useState } from 'react';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
 
-export default function PaymentEMoney(props) {
+export default function PaymentEMoney() {
   let info;
   let gambar;
-  if (props.success) {
+
+  const [isSuccess, setSuccess] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setSuccess(true), 2000);
+  }, []);
+
+  if (isSuccess) {
     info = 'Payment successful!';
     gambar = require('../../../../assets/success.png');
   } else {
