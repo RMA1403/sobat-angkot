@@ -6,6 +6,8 @@ import PaymentCash from './src/screens/Payment/PaymentCash';
 import PaymentEMoney from './src/screens/Payment/PaymentEMoney';
 import Login from './src/screens/Login';
 import PaymentEWallet from './src/screens/Payment/PaymentEWallet';
+import TestReceivePage from './src/screens/TestReceive';
+import TestSendPage from './src/screens/TestSend';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -32,6 +34,8 @@ export default function App() {
         <Stack.Screen name="PaymentCash" component={PaymentCash} />
         <Stack.Screen name="PaymentEMoney" component={PaymentEMoney} />
         <Stack.Screen name="PaymentEWallet" component={PaymentEWallet} />
+        <Stack.Screen name="TestSendPage" component={TestSendPage} />
+        <Stack.Screen name="TestReceivePage" component={TestReceivePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
