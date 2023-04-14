@@ -1,6 +1,7 @@
-import { View, StyleSheet, Image, Text, Pressable, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Image, Text, Dimensions, TouchableOpacity } from 'react-native';
 import theme from '../constants/theme.style';
-import { Dimensions } from 'react-native';
+import url from '../constants/url';
+import { create } from 'apisauce';
 
 const vw = Dimensions.get('window').width;
 const vh = Dimensions.get('window').width;
@@ -15,6 +16,18 @@ export default function ConfirmPayment(props) {
   } else {
     confirmed = true;
   }
+
+  const handleConfirm = async () => {
+    try {
+      props.onConfirm();
+      const res = await create({ baseURL: url }).post('/confirm-payment');
+      const data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <View style={styles.cardContainer}>
       <View
@@ -52,7 +65,7 @@ export default function ConfirmPayment(props) {
       </Text>
 
       {props.notConfirmed ? (
-        <TouchableOpacity style={styles.notConfirmed}>
+        <TouchableOpacity onPress={handleConfirm} style={styles.notConfirmed}>
           <Text style={{ textAlign: 'center', fontWeight: 700, fontSize: 20 }}>Confirm</Text>
         </TouchableOpacity>
       ) : null}

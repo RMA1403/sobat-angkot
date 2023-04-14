@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
 import theme from '../../../constants/theme.style';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import * as Notifications from 'expo-notifications';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
@@ -12,8 +13,14 @@ export default function PaymentCash() {
 
   const [isSuccess, setSuccess] = useState(false);
 
+  const notificationListener = useRef();
+
   useEffect(() => {
-    setTimeout(() => setSuccess(true), 2000);
+    notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
+      if (notification.request.content.body === 'Payment Confirmed') {
+        setSuccess(true);
+      }
+    });
   }, []);
 
   if (isSuccess) {

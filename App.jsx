@@ -5,7 +5,7 @@ import FoundAngkot from './src/screens/Client/FoundAngkot';
 import PaymentCash from './src/screens/Payment/PaymentCash';
 import PaymentEMoney from './src/screens/Payment/PaymentEMoney';
 import Login from './src/screens/Login';
-import DriverHome from './src/screens/DriverHome';
+import DriverHome from './src/screens/Driver';
 import PaymentEWallet from './src/screens/Payment/PaymentEWallet';
 import TestReceivePage from './src/screens/TestReceive';
 import TestSendPage from './src/screens/TestSend';
@@ -35,6 +35,8 @@ export default function App() {
         <Stack.Screen name="PaymentCash" component={PaymentCash} />
         <Stack.Screen name="PaymentEMoney" component={PaymentEMoney} />
         <Stack.Screen name="PaymentEWallet" component={PaymentEWallet} />
+        <Stack.Screen name="DriverHome" component={DriverHome} />
+
         <Stack.Screen name="TestSendPage" component={TestSendPage} />
         <Stack.Screen name="TestReceivePage" component={TestReceivePage} />
       </Stack.Navigator>

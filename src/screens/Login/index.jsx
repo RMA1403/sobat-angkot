@@ -2,7 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import NewInput from '../../components/NewInput';
 import theme from '../../constants/theme.style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import * as Notifications from 'expo-notifications';
 
 const vh = Dimensions.get('window').height;
 
@@ -13,9 +14,23 @@ export default function Login({ navigation }) {
   const handlePress = () => {
     if (username === 'passenger' && password === 'passenger') {
       navigation.navigate('SelectJurusan');
+    } else if (username === 'driver' && password === 'driver') {
+      navigation.navigate('DriverHome');
+    } else {
+      console.log('Invalid username or password');
     }
   };
   const handlePressSignUp = () => console.log('Signup clicked');
+
+  useEffect(() => {
+    async function getToken() {
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
+      return token;
+    }
+    getToken()
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <View style={styles.container}>

@@ -2,8 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect, useState } from 'react';
 import { View, Text, Image, Dimensions, ScrollView } from 'react-native';
 import DriverCard from '../../../components/DriverCard';
+import url from '../../../constants/url';
 import NewInput from '../../../components/NewInput';
 import Map from '../../../components/Map';
+import { create } from 'apisauce';
 
 export default function FoundAngkot({ navigation }) {
   const [jurusan, setJurusan] = useState('');
@@ -14,6 +16,16 @@ export default function FoundAngkot({ navigation }) {
 
   const vh = Dimensions.get('window').height;
   const vw = Dimensions.get('window').width;
+
+  const fetchBackend = async () => {
+    try {
+      await create({ baseURL: url }).post('/cash-payment');
+      const data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +90,10 @@ export default function FoundAngkot({ navigation }) {
             isIncreasing={false}
             price={3000}
             capacity={capacity}
-            cashNavigation={() => navigation.navigate('PaymentCash')}
+            cashNavigation={() => {
+              fetchBackend();
+              navigation.navigate('PaymentCash');
+            }}
             eMoneyNavigation={() => navigation.navigate('PaymentEMoney')}
             eWalletNavigation={() => navigation.navigate('PaymentEWallet')}
           />
