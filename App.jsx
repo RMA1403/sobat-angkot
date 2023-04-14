@@ -5,6 +5,7 @@ import FoundAngkot from './src/screens/Client/FoundAngkot';
 import PaymentCash from './src/screens/Payment/PaymentCash';
 import PaymentEMoney from './src/screens/Payment/PaymentEMoney';
 import Login from './src/screens/Login';
+import DriverHome from './src/screens/DriverHome';
 import PaymentEWallet from './src/screens/Payment/PaymentEWallet';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
