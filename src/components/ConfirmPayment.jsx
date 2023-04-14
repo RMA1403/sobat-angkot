@@ -79,9 +79,7 @@ export default function ConfirmPayment(props) {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.25)',
+    backgroundColor: 'white',
     borderRadius: 40,
     width: 0.823 * vw,
     overflow: 'hidden',
