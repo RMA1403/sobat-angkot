@@ -1,33 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-import theme from '../../constants/theme.style';
-import { Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
+import theme from '../../../constants/theme.style';
+import { useEffect, useState } from 'react';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
 
-export default function PaymentEMoney(props) {
-  let info;
-  let gambar;
-  if (props.success) {
-    info = 'Payment successful!';
-    gambar = require('../../../assets/success.png');
-  } else {
-    info = 'Please prepare your card and tap it accordingly...';
-    gambar = require('../../../assets/loading.png');
-  }
+export default function PaymentEWallet() {
+  const [isSuccess, setSuccess] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setSuccess(true), 2000);
+  }, []);
 
   return (
     <View style={styles.container}>
       <View style={{ alignItems: 'center' }}>
         <Text style={styles.textPayment}>Payment</Text>
-        <Text style={styles.textPayment}>e-Money</Text>
+        <Text style={styles.textPayment}>e-Wallet</Text>
       </View>
       <View style={styles.hargaContainer}>
-        <Text style={styles.harga}>Rp. 3000</Text>
+        <Text style={styles.harga}>3000</Text>
       </View>
-      <Text style={styles.textInfo}>{info}</Text>
-      <Image style={styles.image} source={gambar}></Image>
+      {isSuccess ? (
+        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={styles.textInfo}>Payment successful!</Text>
+          <Image style={styles.image} source={require('../../../../assets/success.png')}></Image>
+        </View>
+      ) : (
+        <TouchableOpacity style={styles.scan}>
+          <Text style={{ textAlign: 'center', fontWeight: 700, fontSize: 28 }}>Scan QR</Text>
+        </TouchableOpacity>
+      )}
       <StatusBar style="auto" />
     </View>
   );
@@ -39,7 +43,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: (88 / 932) * vh,
-    // fontFamily: 'ZenKakuGothicAntique-Black'
   },
   hargaContainer: {
     flexDirection: 'row',
@@ -78,5 +81,22 @@ const styles = StyleSheet.create({
     width: 73,
     height: 77,
     marginTop: 0.05 * vh,
+  },
+  scan: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'black',
+    backgroundColor: 'white',
+    color: '#000000',
+    borderRadius: 90,
+    width: (330 / 430) * vw,
+    height: 66,
+    shadowOffset: { height: 4 },
+    shadowColor: '#171717',
+    shadowOpacity: 0.4,
+    shadowRadius: 2,
+    elevation: 5,
+    marginBottom: (55 / 932) * vh,
   },
 });

@@ -1,22 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Pressable, TextInput } from 'react-native';
-import NewInput from '../../components/NewInput';
-import theme from '../../constants/theme.style';
-import { useState } from 'react';
-import { Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native';
+import theme from '../../../constants/theme.style';
+import { useEffect, useState } from 'react';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
 
-export default function PaymentCash(props) {
+export default function PaymentCash() {
   let info;
   let gambar;
-  if (props.success) {
+
+  const [isSuccess, setSuccess] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setSuccess(true), 2000);
+  }, []);
+
+  if (isSuccess) {
     info = 'Payment successful!';
-    gambar = require('../../../assets/success.png');
+    gambar = require('../../../../assets/success.png');
   } else {
     info = "Please prepare your cash accordingly and wait for driver's confirmation....";
-    gambar = require('../../../assets/loading.png');
+    gambar = require('../../../../assets/loading.png');
   }
 
   return (
@@ -41,7 +46,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 0.01073 * vh,
-    // fontFamily: 'ZenKakuGothicAntique-Black'
   },
   hargaContainer: {
     flexDirection: 'row',
