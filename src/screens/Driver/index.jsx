@@ -1,20 +1,43 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Dimensions } from 'react-native';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Map from '../../components/Map';
 import theme from '../../constants/theme.style';
 import ConfirmPayment from '../../components/ConfirmPayment';
-import { BVLinearGradient } from 'react-native-linear-gradient';
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Notifications from 'expo-notifications';
+import Notification from '../../components/Notification';
 
 const vw = Dimensions.get('window').width;
 const vh = Dimensions.get('window').height;
 
 export default function DriverHome() {
   const [flow, setFlow] = useState(1);
-  const angka = 8;
+  const [angka, setAngka] = useState(8);
+  const [showNotif, setShowNotif] = useState(false);
+  const [payment, setPayment] = useState('');
+
   let notConfirmed;
   let isLoading;
+
+  const notificationListener = useRef();
+
+  useEffect(() => {
+    notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
+      if (notification.request.content.body === 'Cash Payment') {
+        setFlow(2);
+      } else if (notification.request.content.body === 'E-Money Payment') {
+        setShowNotif(true);
+        console.log('HAS');
+        setPayment('E-Money Payment');
+        setTimeout(() => setShowNotif(false), 2000);
+      } else if (notification.request.content.body === 'E-Wallet Payment') {
+        setShowNotif(true);
+        setPayment('E-Wallet Payment');
+        setTimeout(() => setShowNotif(false), 2000);
+      }
+    });
+  }, []);
 
   const data = {
     name: 'Mr. John Doe',
@@ -34,6 +57,19 @@ export default function DriverHome() {
 
   return (
     <View>
+      <View
+        style={{
+          position: 'absolute',
+          width: 1 * vw,
+          zIndex: 50,
+          top: 10,
+          opacity: showNotif ? 100 : 0,
+        }}
+      >
+        <View style={{ width: 1 * vw, alignItems: 'center' }}>
+          <Notification paid={true} username="passenger" harga={3000} payment={payment} />
+        </View>
+      </View>
       <View style={styles.textContainer}>
         <Text style={styles.text}>Good Morning,</Text>
         <Text style={styles.text}>{data.name}</Text>
@@ -56,12 +92,18 @@ export default function DriverHome() {
       {flow < 2 ? (
         <View style={{ flexDirection: 'column', alignItems: 'center' }}>
           <View style={styles.countingContainer}>
-            <View style={styles.counting}>
+            <TouchableOpacity
+              onPress={() => (angka < 12 ? setAngka(angka + 1) : null)}
+              style={styles.counting}
+            >
               <Text style={{ fontWeight: 700, fontSize: 60, color: '#8D8D8D' }}>+</Text>
-            </View>
-            <View style={styles.counting}>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => (angka > 0 ? setAngka(angka - 1) : null)}
+              style={styles.counting}
+            >
               <Text style={{ fontWeight: 700, fontSize: 60, color: '#8D8D8D' }}>-</Text>
-            </View>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.passengerCount}>
@@ -79,6 +121,11 @@ export default function DriverHome() {
                   username="kaie666"
                   notConfirmed={notConfirmed}
                   isLoading={isLoading}
+                  onConfirm={() => {
+                    setFlow(3);
+                    setTimeout(() => setFlow(4), 1000);
+                    setTimeout(() => setFlow(1), 3000);
+                  }}
                 />
               </View>
             </View>

@@ -17,47 +17,47 @@ export default function Notification(props) {
         right: (15 / 430) * vw,
       }}
     >
-      <LinearGradient colors={[theme.DARK_GRAY, '#FFFFFF']} style={styles.linearGradient}>
-        <View style={styles.container}>
-          <View style={{ flexDirection: 'row', marginTop: 15, marginLeft: (22 / 430) * vw }}>
-            <View style={styles.bulat}></View>
-            <Text style={{ fontWeight: 400, fontSize: 15 }}>NOTIFICATION</Text>
+      {/* <LinearGradient colors={[theme.DARK_GRAY, '#FFFFFF']} style={styles.linearGradient}> */}
+      <View style={styles.container}>
+        <View style={{ flexDirection: 'row', marginTop: 15, marginLeft: (22 / 430) * vw }}>
+          <View style={styles.bulat}></View>
+          <Text style={{ fontWeight: 400, fontSize: 15 }}>NOTIFICATION</Text>
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={styles.imageContainer}>
+            <Image
+              style={{ borderRadius: 35 }}
+              source={require('../../assets/angkot-setengah.png')}
+            />
           </View>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={styles.imageContainer}>
-              <Image
-                style={{ borderRadius: 35 }}
-                source={require('../../assets/angkot-setengah.png')}
-              />
-            </View>
-            <View>
-              <Text style={{ fontWeight: 700, fontSize: 14 }}>SobatAngkot</Text>
-              {props.foundAngkot ? (
-                <Text>
-                  We found your Angkot! It's on its way to pick you up, please wait patiently.{' '}
-                  <Text style={{ fontWeight: 700, fontSize: 14 }}>
-                    Capacity: {props.kapasitas}/12
-                  </Text>
+          <View style={{ flex: 1 }}>
+            <Text style={{ fontWeight: 700, fontSize: 14 }}>SobatAngkot</Text>
+            {props.foundAngkot ? (
+              <Text>
+                We found your Angkot! It's on its way to pick you up, please wait patiently.{' '}
+                <Text style={{ fontWeight: 700, fontSize: 14 }}>
+                  Capacity: {props.kapasitas}/12
                 </Text>
-              ) : null}
-              {props.angkotIsHere ? (
-                <Text>
-                  Your angkot is here!{' '}
-                  <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.platNomor} </Text>
-                  drived by <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.supir} </Text>
-                </Text>
-              ) : null}
-              {props.paid ? (
-                <Text>
-                  User <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.username} </Text>
-                  just paid <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.harga} </Text>
-                  through <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.payment}! </Text>
-                </Text>
-              ) : null}
-            </View>
+              </Text>
+            ) : null}
+            {props.angkotIsHere ? (
+              <Text>
+                Your angkot is here!{' '}
+                <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.platNomor} </Text>
+                drived by <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.supir} </Text>
+              </Text>
+            ) : null}
+            {props.paid ? (
+              <Text>
+                User <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.username} </Text>
+                just paid <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.harga} </Text>
+                through <Text style={{ fontWeight: 700, fontSize: 14 }}>{props.payment}! </Text>
+              </Text>
+            ) : null}
           </View>
         </View>
-      </LinearGradient>
+      </View>
+      {/* </LinearGradient> */}
     </View>
   );
 }
@@ -73,9 +73,11 @@ const styles = StyleSheet.create({
   },
   container: {
     width: (378 / 430) * vw,
-    height: 109,
+    // height: 109,
+    paddingBottom: 8,
     borderRadius: 30,
     backgroundColor: 'white',
+    borderWidth: 2,
   },
   bulat: {
     backgroundColor: theme.DARK_GRAY,
@@ -85,8 +87,9 @@ const styles = StyleSheet.create({
     marginRight: (7 / 430) * vw,
   },
   imageContainer: {
-    width: (24 / 430) * vw,
-    height: 106,
+    width: (58 / 430) * vw,
+    // height: 106,
+    height: (58 / 430) * vw,
     marginLeft: (22 / 430) * vw,
     marginRight: (7 / 430) * vw,
   },
