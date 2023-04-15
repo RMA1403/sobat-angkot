@@ -35,9 +35,7 @@ export default function App() {
     //     <Stack.Screen name="PaymentEMoney" component={PaymentEMoney} />
     //     <Stack.Screen name="PaymentEWallet" component={PaymentEWallet} />
     //   </Stack.Navigator>
-    // </NavigationContainer>
-    <View style={{ alignItems: 'center', justifyContent: 'center', flex: 1 }}>
-      <Notification paid={true} username="1234" harga="johndoe" payment="qris" />
-    </View>
+
+    <Notification foundAngkot={true} kapasitas="8" />
   );
 }
