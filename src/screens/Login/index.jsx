@@ -1,26 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import NewInput from '../../components/NewInput';
 import theme from '../../constants/theme.style';
-import { useState } from 'react';
-import { Dimensions } from 'react-native';
+import { useEffect, useState } from 'react';
+import * as Notifications from 'expo-notifications';
 
 const vh = Dimensions.get('window').height;
-const vw = Dimensions.get('window').width;
 
 export default function Login({ navigation }) {
-  const handlePress = () => navigation.navigate('ClientHome');
-  const handlePressSignUp = () => 0;
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handlePress = () => {
+    if (username === 'passenger' && password === 'passenger') {
+      navigation.navigate('SelectJurusan');
+    } else if (username === 'driver' && password === 'driver') {
+      navigation.navigate('DriverHome');
+    } else {
+      console.log('Invalid username or password');
+    }
+  };
+  const handlePressSignUp = () => console.log('Signup clicked');
+
+  useEffect(() => {
+    async function getToken() {
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
+      return token;
+    }
+    getToken()
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={require('../../../assets/angkot1.png')} />
       <Text style={styles.text}>Sobat Angkot</Text>
       <View style={styles.textInput}>
-        <NewInput />
+        <NewInput onChange={(uname) => setUsername(uname)} />
       </View>
       <View style={styles.textInput}>
-        <NewInput isPassword={true} />
+        <NewInput onChange={(pass) => setPassword(pass)} isPassword={true} />
       </View>
       <TouchableOpacity onPress={handlePress} style={styles.login}>
         <Text style={styles.textLogin}>Login</Text>
@@ -28,7 +48,9 @@ export default function Login({ navigation }) {
       <View style={styles.textContainer}>
         <Text style={{ color: theme.DARK_BLUE, fontSize: 12 }}>Doesn't have an account yet? </Text>
         <TouchableOpacity onPress={handlePressSignUp}>
-          <Text style={{ color: theme.DARK_BLUE, fontWeight: 700, fontSize: 12 }}>Sign up here.</Text>
+          <Text style={{ color: theme.DARK_BLUE, fontWeight: 700, fontSize: 12 }}>
+            Sign up here.
+          </Text>
         </TouchableOpacity>
       </View>
 
@@ -42,7 +64,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    // fontFamily: 'ZenKakuGothicAntique-Black'
   },
   image: {
     width: 220,
