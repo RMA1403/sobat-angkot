@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import theme from '../../../constants/theme.style';
+import url from '../../../constants/url';
 import { Dimensions } from 'react-native';
 import { useEffect, useState } from 'react';
+import { create } from 'apisauce';
 
 const vh = Dimensions.get('window').height;
 const vw = Dimensions.get('window').width;
@@ -13,7 +15,18 @@ export default function PaymentEMoney() {
 
   const [isSuccess, setSuccess] = useState(false);
 
+  const fetchBackend = async () => {
+    try {
+      await create({ baseURL: url }).post('/emoney-payment');
+      const data = await res.json();
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
+    setTimeout(() => fetchBackend(), 1000);
     setTimeout(() => setSuccess(true), 2000);
   }, []);
 

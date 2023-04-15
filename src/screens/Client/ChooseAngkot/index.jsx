@@ -65,7 +65,7 @@ export default function ChooseAngkot({ navigation }) {
     try {
       await AsyncStorage.setItem('@license_plate', licensePlate);
       await AsyncStorage.setItem('@capacity', capacity);
-      navigation.navigate('FoundAngkot');
+      navigation.navigate('SearchingAngkot');
     } catch (err) {
       console.log(err);
     }

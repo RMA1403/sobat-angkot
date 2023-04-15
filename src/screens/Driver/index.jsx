@@ -6,6 +6,7 @@ import theme from '../../constants/theme.style';
 import ConfirmPayment from '../../components/ConfirmPayment';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Notifications from 'expo-notifications';
+import Notification from '../../components/Notification';
 
 const vw = Dimensions.get('window').width;
 const vh = Dimensions.get('window').height;
@@ -13,6 +14,8 @@ const vh = Dimensions.get('window').height;
 export default function DriverHome() {
   const [flow, setFlow] = useState(1);
   const [angka, setAngka] = useState(8);
+  const [showNotif, setShowNotif] = useState(false);
+  const [payment, setPayment] = useState('');
 
   let notConfirmed;
   let isLoading;
@@ -23,6 +26,15 @@ export default function DriverHome() {
     notificationListener.current = Notifications.addNotificationReceivedListener((notification) => {
       if (notification.request.content.body === 'Cash Payment') {
         setFlow(2);
+      } else if (notification.request.content.body === 'E-Money Payment') {
+        setShowNotif(true);
+        console.log('HAS');
+        setPayment('E-Money Payment');
+        setTimeout(() => setShowNotif(false), 2000);
+      } else if (notification.request.content.body === 'E-Wallet Payment') {
+        setShowNotif(true);
+        setPayment('E-Wallet Payment');
+        setTimeout(() => setShowNotif(false), 2000);
       }
     });
   }, []);
@@ -45,6 +57,19 @@ export default function DriverHome() {
 
   return (
     <View>
+      <View
+        style={{
+          position: 'absolute',
+          width: 1 * vw,
+          zIndex: 50,
+          top: 10,
+          opacity: showNotif ? 100 : 0,
+        }}
+      >
+        <View style={{ width: 1 * vw, alignItems: 'center' }}>
+          <Notification paid={true} username="passenger" harga={3000} payment={payment} />
+        </View>
+      </View>
       <View style={styles.textContainer}>
         <Text style={styles.text}>Good Morning,</Text>
         <Text style={styles.text}>{data.name}</Text>

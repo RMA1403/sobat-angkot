@@ -9,6 +9,7 @@ import DriverHome from './src/screens/Driver';
 import PaymentEWallet from './src/screens/Payment/PaymentEWallet';
 import TestReceivePage from './src/screens/TestReceive';
 import TestSendPage from './src/screens/TestSend';
+import SearchingAngkot from './src/screens/Client/SearchingAngkot';
 
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -36,6 +37,7 @@ export default function App() {
         <Stack.Screen name="PaymentEMoney" component={PaymentEMoney} />
         <Stack.Screen name="PaymentEWallet" component={PaymentEWallet} />
         <Stack.Screen name="DriverHome" component={DriverHome} />
+        <Stack.Screen name="SearchingAngkot" component={SearchingAngkot} />
 
         <Stack.Screen name="TestSendPage" component={TestSendPage} />
         <Stack.Screen name="TestReceivePage" component={TestReceivePage} />
